@@ -8,6 +8,8 @@ export const DortmundVSBayern: ProgramTypes.Match = {
     begin: Date.now() - OFFSET,
     homeTeam: Teams.Dortmund,
     awayTeam: Teams.Bayern,
+    country: 'Germany',
+    league: 'Bundesliga',
     score: [3, 0]
 };
 
@@ -15,5 +17,7 @@ export const MadridVSBarcelona: ProgramTypes.Match = {
     id: 'm2',
     begin: Date.now() + OFFSET,
     homeTeam: Teams.Madrid,
-    awayTeam: Teams.Barcelona
+    awayTeam: Teams.Barcelona,
+    country: 'Spain',
+    league: 'Primera Division'
 };

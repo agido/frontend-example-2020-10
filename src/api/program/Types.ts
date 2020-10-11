@@ -8,5 +8,7 @@ export interface Match {
     begin: number;
     homeTeam: Team;
     awayTeam: Team;
+    country: string;
+    league: string;
     score?: [number, number];
 }

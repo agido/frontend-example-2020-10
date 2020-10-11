@@ -23,6 +23,16 @@ const Time = styled.div`
     margin-right: 10px;
 `;
 
+const Country = styled.div`
+    margin-right: 10px;
+    color: blue;
+`;
+
+const League = styled.div`
+    margin-right: 10px;
+    color: green;
+`;
+
 const Team = styled.div`
     margin-right: 10px;
 `;
@@ -31,10 +41,15 @@ const Score = styled.div``;
 
 const MatchTime: React.FC<Props> = ({match}) => {
     const now = Date.now();
+
+    const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const matchDay = new Date(match.begin);
+    const dayName = weekDays[matchDay.getDay()];
+
     if (match.begin < now) {
         return <Time>{`${DateFormat.milliSecondsToFullinutes(now - match.begin)}${MINUTE_SYMBOL}`}</Time>;
     } else {
-        return <Time>{`${DateFormat.timestampToDate(match.begin)} ${DateFormat.timestampToTime(match.begin)}`}</Time>;
+        return <Time>{`${dayName} ${DateFormat.timestampToTime(match.begin)}`}</Time>;
     }
 };
 
@@ -48,6 +63,12 @@ const Match: React.FC<Props> = ({match}) => {
             <Row>
                 <Team>{match.homeTeam.label}</Team>
                 <Team>{match.awayTeam.label}</Team>
+            </Row>
+            <Row>
+                <Country>{match.country}</Country>
+            </Row>
+            <Row>
+                <League>{match.league}</League>
             </Row>
         </Container>
     );
